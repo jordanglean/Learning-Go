@@ -31,3 +31,10 @@ A demonstration of pointers in Go, covering:
 - Address-of operator (`&`)
 - Dereferencing pointers (`*`)
 - Passing pointers to functions
+
+### structs/
+A user data application demonstrating structs in Go, covering:
+- Struct type definition and initialization
+- Struct fields with various types (string, time.Time)
+- Method receivers (functions attached to structs)
+- Working with the `time` package
