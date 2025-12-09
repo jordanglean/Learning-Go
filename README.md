@@ -38,3 +38,11 @@ A user data application demonstrating structs in Go, covering:
 - Struct fields with various types (string, time.Time)
 - Method receivers (functions attached to structs)
 - Working with the `time` package
+
+### cobra-cli/
+A CLI application built with Cobra demonstrating:
+- Using the `github.com/spf13/cobra` library for CLI scaffolding
+- Root commands and subcommands (`serve`)
+- Persistent flags (available to all subcommands) vs local flags
+- Flag types: boolean (`--verbose`), integer (`--port`), string (`--host`)
+- Input validation (port range checking)
