@@ -13,11 +13,26 @@ type User struct {
 	createdAt time.Time
 }
 
-// reciver
+type Admin struct {
+	email    string
+	password string
+	User
+}
+
+// OutputUserDetails reciver
 func (u *User) OutputUserDetails() {
 	fmt.Println("First Name: ", u.firstName)
 	fmt.Println("Last Name: ", u.lastName)
 	fmt.Println("BirthDate: ", u.birthDate)
+}
+
+func (a *Admin) OutputAdminDetails() {
+	fmt.Println("Email", a.email)
+	fmt.Println("Password", a.password)
+	fmt.Println("Admin User Details: ")
+	fmt.Println("Admin First Name: ", a.firstName)
+	fmt.Println("Admin Last Name: ", a.lastName)
+	fmt.Println("Admin BirthDate: ", a.birthDate)
 }
 
 func (u *User) ClearUserName() {
@@ -35,6 +50,19 @@ func NewUser(firstName, lastName, birthDate string) (*User, error) {
 		lastName:  lastName,
 		birthDate: birthDate,
 		createdAt: time.Now(),
+	}, nil
+}
+
+func NewAdmin(email, password string) (*Admin, error) {
+	return &Admin{
+		email:    email,
+		password: password,
+		User: User{
+			firstName: "ADMIN",
+			lastName:  "ADMIN",
+			birthDate: "----",
+			createdAt: time.Now(),
+		},
 	}, nil
 }
 

@@ -17,6 +17,13 @@ func main() {
 		return
 	}
 
+	admin, err := user.NewAdmin("jordan@test.com", "password")
+	if err != nil {
+		fmt.Println("Error creating new admin!")
+	}
+
+	admin.OutputAdminDetails()
+
 	appUser.OutputUserDetails()
 	appUser.ClearUserName()
 	appUser.OutputUserDetails()
