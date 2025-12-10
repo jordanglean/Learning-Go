@@ -32,7 +32,7 @@ func (note Note) Display() {
 	fmt.Println("Created at: ", note.CreatedAt)
 }
 
-func (note Note) SaveToFile() error {
+func (note Note) Save() error {
 	fileName := strings.ReplaceAll(note.Title, " ", "_")
 	fileName = strings.ToLower(fileName)
 
