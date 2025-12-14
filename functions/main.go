@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+type transfromFn func(int) int
+
 func main() {
 	numbers := []int{1, 2, 3, 4}
 	doubled := transformNumbers(&numbers, double)
@@ -11,7 +13,7 @@ func main() {
 	fmt.Println("Tripled Number: ", tripled)
 }
 
-func transformNumbers(number *[]int, transform func(int) int) []int {
+func transformNumbers(number *[]int, transform transfromFn) []int {
 	dNumbers := []int{}
 	for _, value := range *number {
 		dNumbers = append(dNumbers, transform(value))
