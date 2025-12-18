@@ -3,11 +3,14 @@ package main
 import (
 	"net/http"
 
+	"example.com/rest-api/db"
 	"example.com/rest-api/models"
+	"github.com/bytedance/gopkg/util/logger"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+	db.InitDB()
 	server := gin.Default()
 
 	server.GET("/events", getEvents)
@@ -33,10 +36,18 @@ func createEvent(context *gin.Context) {
 		return
 	}
 
-	event.ID = 1
 	event.UserID = 1
 
-	event.Save()
+	_, err = event.Save()
+
+	if err != nil {
+		logger.Error(err)
+		context.JSON(http.StatusBadGateway, gin.H{
+			"message": "Could not store data.",
+			"error":   err,
+		})
+		return
+	}
 
 	context.JSON(http.StatusCreated, event)
 
